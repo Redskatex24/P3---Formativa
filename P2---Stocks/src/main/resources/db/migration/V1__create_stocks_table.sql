@@ -1,0 +1,5 @@
+CREATE TABLE stocks (
+    id int NOT NULL AUTO_INCREMENT,
+    cantidad INT DEFAULT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

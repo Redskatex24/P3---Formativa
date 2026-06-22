@@ -1,0 +1,2 @@
+INSERT INTO venta.ventas (venta, id_cliente, id_producto, id_pedido, id_vendedor) VALUES ('Spider-Man 2', 1, 3, 1, 1);
+INSERT INTO venta.ventas (venta, id_cliente, id_producto, id_pedido, id_vendedor) VALUES ('PlayStation 5', 2, 5, 2, 2);
