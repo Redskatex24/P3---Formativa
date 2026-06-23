@@ -9,16 +9,6 @@
         <module name="eureka" />
         <module name="gateway" />
       </profile>
-      <profile name="Annotation profile for categoriaproducto" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-        </processorPath>
-        <module name="categoriaproducto" />
-      </profile>
       <profile name="Annotation profile for venta" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -30,10 +20,21 @@
         <module name="categoriacliente" />
         <module name="documento" />
         <module name="vendedores" />
-        <module name="clientes" />
         <module name="productos" />
         <module name="pago" />
         <module name="stocks" />
+      </profile>
+      <profile name="Annotation profile for pedidos" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="clientes" />
+        <module name="categoriaproducto" />
+        <module name="pedidos" />
       </profile>
     </annotationProcessing>
   </component>
@@ -46,6 +47,7 @@
       <module name="eureka" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="pago" options="-parameters" />
+      <module name="pedidos" options="-parameters" />
       <module name="productos" options="-parameters" />
       <module name="stocks" options="-parameters" />
       <module name="vendedores" options="-parameters" />
