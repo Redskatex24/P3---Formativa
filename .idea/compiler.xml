@@ -9,6 +9,16 @@
         <module name="eureka" />
         <module name="gateway" />
       </profile>
+      <profile name="Annotation profile for categoriaproducto" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="categoriaproducto" />
+      </profile>
       <profile name="Annotation profile for venta" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -17,7 +27,6 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
         <module name="venta" />
-        <module name="categoriaproducto" />
         <module name="categoriacliente" />
         <module name="documento" />
         <module name="vendedores" />
@@ -27,9 +36,6 @@
         <module name="stocks" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="pedidos" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
