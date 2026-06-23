@@ -44,7 +44,7 @@ services:
     build: ./productos
     container_name: productos
     depends_on:
-      db-tiendavideojuegos:
+      db-productos:
         condition: service_healthy
       eureka:
         condition: service_started
@@ -59,10 +59,10 @@ services:
     networks:
       - microservicios-net
 
-  db-tiendavideojuegos:
+  db-clientes:
     image: mysql
     environment:
-      MYSQL_DATABASE: db_tiendavideojuegos
+      MYSQL_DATABASE: db_clientes
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3307:3306"
@@ -74,18 +74,19 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
+
   clientes:
     build: ./clientes
     container_name: clientes
     depends_on:
-      db-tiendavideojuegos:
+      db-clientes:
         condition: service_healthy
       eureka:
         condition: service_started
       categoriascl:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-tiendavideojuegos:3307/db_tiendavideojuegos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-clientes:3307/db_clientes
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -93,82 +94,162 @@ services:
     networks:
       - microservicios-net
 
+  db-documento:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: db_documento
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservicios-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
   documento:
     build: ./documento
     container_name: documento
     depends_on:
-      db-tiendavideojuegos:
+      db-documento:
         condition: service_healthy
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-tiendavideojuegos:3307/db_tiendavideojuegos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-documento:3307/db_documento
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
     networks:
       - microservicios-net
+
+  db-categoriascl:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: db_categoriascl
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservicios-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   categoriacliente:
     build: ./categoriacliente
     container_name: categoriacliente
     depends_on:
-      db-tiendavideojuegos:
+      db-categoriascl:
         condition: service_healthy
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-tiendavideojuegos:3307/db_tiendavideojuegos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-categoriascl:3307/db_categoriascl
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
     networks:
       - microservicios-net
+
+  db-categoriaspr:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: db_categoriaspr
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservicios-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   categoriaproducto:
     build: ./categoriaproducto
     container_name: categoriaproducto
     depends_on:
-      db-tiendavideojuegos:
+      db-categoriaspr:
         condition: service_healthy
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-tiendavideojuegos:3307/db_tiendavideojuegos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-categoriaspr:3307/db_categoriaspr
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
     networks:
       - microservicios-net
+
+  db-pago:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: db_pago
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservicios-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   pago:
     build: ./pago
     container_name: pago
     depends_on:
-      db-tiendavideojuegos:
+      db-pago:
         condition: service_healthy
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-tiendavideojuegos:3306/db_tiendavideojuegos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-pago:3307/db_pago
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
     networks:
       - microservicios-net
 
+  db-pedidos:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: db_pedidos
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservicios-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
   pedidos:
     build: ./pedidos
     container_name: pedidos
     depends_on:
-      db-tiendavideojuegos:
+      db-pedidos:
         condition: service_healthy
       eureka:
         condition: service_started
       categoriaspr:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-tiendavideojuegos:3307/db_tiendavideojuegos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-pedidos:3307/db_pedidos
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -176,27 +257,91 @@ services:
     networks:
       - microservicios-net
 
-  vendedores:
-    build: ./vendedores
-    container_name: vendedores
+  db-stocks:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: db_stocks
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservicios-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  stocks:
+    build: ./stocks
+    container_name: stocks
     depends_on:
-      db-tiendavideojuegos:
+      db-stocks:
         condition: service_healthy
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-tiendavideojuegos:3307/db_tiendavideojuegos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-stocks:3307/db_stocks
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
     networks:
       - microservicios-net
 
+  db-vendedores:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: db_vendedores
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservicios-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  vendedores:
+    build: ./vendedores
+    container_name: vendedores
+    depends_on:
+      db-vendedores:
+        condition: service_healthy
+      eureka:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-vendedores:3307/db_vendedores
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
+    networks:
+      - microservicios-net
+
+  db-venta:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: db_venta
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservicios-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
   venta:
     build: ./venta
     container_name: venta
     depends_on:
-      db-tiendavideojuegos:
+      db-venta:
         condition: service_healthy
       eureka:
         condition: service_started
@@ -209,7 +354,7 @@ services:
       vendedores:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-tiendavideojuegos:3306/db_tiendavideojuegos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-venta:3307/db_venta
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
