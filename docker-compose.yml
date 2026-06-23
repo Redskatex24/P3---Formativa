@@ -142,9 +142,9 @@ services:
       retries: 5
       start_period: 30s
 
-  categoriacliente:
+  categoriascl:
     build: ./categoriacliente
-    container_name: categoriacliente
+    container_name: categoriascl
     depends_on:
       db-categoriascl:
         condition: service_healthy
@@ -174,9 +174,9 @@ services:
       retries: 5
       start_period: 30s
 
-  categoriaproducto:
-    build: ./categoriaproducto
-    container_name: categoriaproducto
+  categoriaspr:
+    build: ./categoriasproducto
+    container_name: categoriaspr
     depends_on:
       db-categoriaspr:
         condition: service_healthy
@@ -246,14 +246,11 @@ services:
         condition: service_healthy
       eureka:
         condition: service_started
-      categoriaspr:
-        condition: service_started
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-pedidos:3307/db_pedidos
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - CATEGORIAS_API_URL=http://categorias:8083/api/v1
     networks:
       - microservicios-net
 
