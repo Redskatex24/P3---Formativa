@@ -175,7 +175,7 @@ services:
       start_period: 30s
 
   categoriaspr:
-    build: ./categoriasproducto
+    build: ./categoriaproducto
     container_name: categoriaspr
     depends_on:
       db-categoriaspr:
@@ -246,11 +246,17 @@ services:
         condition: service_healthy
       eureka:
         condition: service_started
+      clientes:
+        condition: service_started
+      productos:
+        condition: service_started
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-pedidos:3307/db_pedidos
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
+      - CLIENTES_API_URL=http://clientes:8089/api/v1
+      - PRODUCTOS_API_URL=http://clientes:8082/api/v1
     networks:
       - microservicios-net
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/P2---CategoriaCliente/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---CategoriaProducto/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Clientes/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Documento/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Eureka/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Gateway/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Pago/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Productos/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Stocks/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Vendedores/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/P2---Venta/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/categoriacliente/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/categoriaproducto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/clientes/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/documento/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pago/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/productos/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/stocks/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vendedores/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/venta/src/main/java" charset="UTF-8" />
   </component>
 </project>

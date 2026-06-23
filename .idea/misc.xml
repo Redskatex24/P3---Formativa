@@ -15,7 +15,24 @@
         <option value="$PROJECT_DIR$/P2---Vendedores/pom.xml" />
         <option value="$PROJECT_DIR$/P2---CategoriaCliente/pom.xml" />
         <option value="$PROJECT_DIR$/P2---CategoriaProducto/pom.xml" />
+        <option value="$PROJECT_DIR$/pedidos/pom.xml" />
+        <option value="$PROJECT_DIR$/categoriacliente/pom.xml" />
+        <option value="$PROJECT_DIR$/categoriaproducto/pom.xml" />
+        <option value="$PROJECT_DIR$/clientes/pom.xml" />
+        <option value="$PROJECT_DIR$/documento/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/pago/pom.xml" />
+        <option value="$PROJECT_DIR$/productos/pom.xml" />
+        <option value="$PROJECT_DIR$/stocks/pom.xml" />
+        <option value="$PROJECT_DIR$/vendedores/pom.xml" />
+        <option value="$PROJECT_DIR$/venta/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/pedidos/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="25" project-jdk-type="JavaSDK">
