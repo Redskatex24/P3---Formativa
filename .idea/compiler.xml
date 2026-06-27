@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -9,22 +10,22 @@
         <module name="eureka" />
         <module name="gateway" />
       </profile>
-      <profile name="Annotation profile for pedidos" enabled="true">
+      <profile name="Annotation profile for venta" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
-        <module name="categoriaproducto" />
         <module name="venta" />
+        <module name="categoriaproducto" />
         <module name="categoriacliente" />
         <module name="documento" />
         <module name="pedidos" />
-        <module name="clientes" />
         <module name="vendedores" />
-        <module name="pago" />
+        <module name="clientes" />
         <module name="productos" />
+        <module name="pago" />
         <module name="stocks" />
       </profile>
     </annotationProcessing>

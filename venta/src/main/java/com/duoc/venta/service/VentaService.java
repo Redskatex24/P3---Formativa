@@ -1,5 +1,10 @@
 package com.duoc.venta.service;
 
+import com.duoc.venta.model.OrderModel;
+import com.duoc.venta.model.ClientModel;
+import com.duoc.venta.model.VentaModel;
+import com.duoc.venta.model.ProductModel;
+import com.duoc.venta.model.SalemanModel;
 import com.duoc.venta.client.Client;
 import com.duoc.venta.dto.VentaDTO;
 import com.duoc.venta.dto.VentaRequest;
@@ -96,11 +101,9 @@ public class VentaService {
         dto.setVenta(venta.getVenta());
         return dto;
     }
-    private VentaDTO convertirADTO(VentaModel venta, ClientModel clientes, ProductModel producto, OrderModel order,SalemanModel salemnan) {
-        if(venta == null) return null;
+
+    private VentaDTO convertirADTO(ClientModel clientes, ProductModel producto, OrderModel order,SalemanModel salemnan) {
         VentaDTO dto = new VentaDTO();
-        dto.setId(venta.getId());
-        dto.setVenta(venta.getVenta());
         dto.setId_cliente(clientes.getId());
         dto.setNombre_cliente(clientes.getNombre());
         dto.setId_producto(producto.getId());
