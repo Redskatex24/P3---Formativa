@@ -9,32 +9,23 @@
         <module name="eureka" />
         <module name="gateway" />
       </profile>
-      <profile name="Annotation profile for venta" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-        </processorPath>
-        <module name="venta" />
-        <module name="categoriacliente" />
-        <module name="documento" />
-        <module name="vendedores" />
-        <module name="productos" />
-        <module name="pago" />
-        <module name="stocks" />
-      </profile>
       <profile name="Annotation profile for pedidos" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
-        <module name="clientes" />
         <module name="categoriaproducto" />
+        <module name="venta" />
+        <module name="categoriacliente" />
+        <module name="documento" />
         <module name="pedidos" />
+        <module name="clientes" />
+        <module name="vendedores" />
+        <module name="pago" />
+        <module name="productos" />
+        <module name="stocks" />
       </profile>
     </annotationProcessing>
   </component>

@@ -33,13 +33,16 @@ public class ClientesService {
         return convertirADTO(guardado);
     }
     public List<ClientesDTO> listar() {
+        log.info("Ejecutando consulta de todos los clientes en la base de datos.");
         return clientesRepository.findAll()
                 .stream()
                 .map(this::convertirADTO)
                 .collect(Collectors.toList());
     }
     public ClientesDTO buscarPorId(int id) {
+        log.info("Buscando cliente por ID: {}", id);
         ClientesModel clientes = clientesRepository.findById(id).orElseThrow(() -> new ClientesNotFoundException(id));
+        log.info("Consultando categoría asociada (ID: {}) a través de CategoriaCliente", clientes.getId_categoria());
         CategoriasModel categoria = categoriaCliente.obtenerCategorias(clientes.getId_categoria());
         ClientesDTO clienteDTO = new ClientesDTO();
         clienteDTO.setNombre(clientes.getNombre());
@@ -49,18 +52,22 @@ public class ClientesService {
         return convertirADTO(clientes, categoria);
     }
     public ClientesDTO actualizar(int id, ClientesRequest request) {
+        log.info("Iniciando actualización del cliente ID: {}", id);
         ClientesModel clienteExistente = clientesRepository.findById(id).orElseThrow(() -> new ClientesNotFoundException(id));
+        log.info("Consultando categoría asociada (ID: {}) para verificación en actualización", clienteExistente.getId_categoria());
         CategoriasModel categoriaExistente = categoriaCliente.obtenerCategorias(clienteExistente.getId_categoria());
         clienteExistente.setNombre(request.getNombre());
         clienteExistente.setNumero(request.getNumero());
         categoriaExistente.setId(categoriaExistente.getId());
         categoriaExistente.setNombre(categoriaExistente.getNombre());
 
+        log.info("Guardando cambios actualizados para el cliente ID: {}", id);
         ClientesModel actualizado = clientesRepository.save(clienteExistente);
         return convertirADTO(actualizado);
     }
 
     public void eliminar(int id) {
+        log.info("Ejecutando la eliminación del cliente ID: {}", id);
         clientesRepository.deleteById(id);
     }
 
@@ -84,6 +91,7 @@ public class ClientesService {
         return dto;
     }
     public List<ClientesDTO> buscarPorNombre(String nombre) {
+        log.info("Buscando clientes que coincidan con el nombre: '{}'", nombre);
         return clientesRepository.findClientesModelByNombreContainsIgnoreCase(nombre)
                 .stream()
                 .map(this::convertirADTO)

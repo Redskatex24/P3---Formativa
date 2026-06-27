@@ -23,39 +23,47 @@ public class ClientesController {
 
     @GetMapping
     public ResponseEntity<List<ClientesDTO>> listar(@RequestParam(required = false) String nombre) {
+        log.info("Solicitud recibida para listar clientes. Filtro por nombre: '{}'", nombre);
         List<ClientesDTO> clientes;
         if (nombre != null) {
             clientes = clientesService.buscarPorNombre(nombre);
         } else {
             clientes = clientesService.listar();
         }
-        if (clientes.isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (clientes.isEmpty()) {
+            log.warn("No se encontraron clientes para la búsqueda realizada.");
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(clientes, HttpStatus.OK);
     }
     @PostMapping
     public ResponseEntity<ClientesDTO> guardar(@Valid @RequestBody ClientesRequest request) {
-        log.info("El request para crear un cliente fue: " + request);
+        log.info("Solicitud para guardar un nuevo cliente: {}", request);
         return new ResponseEntity<>(clientesService.guardar(request), HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
     public ResponseEntity<ClientesDTO> buscarPorId(@PathVariable int id){
+        log.info("Iniciando búsqueda de cliente con ID: {}", id);
         try{
             return new ResponseEntity<>(clientesService.buscarPorId(id), HttpStatus.OK);}
         catch (NullPointerException e){
-            log.error("No se ha encontrado el id de cliente: " + id + e.getMessage());
+            log.warn("No se encontró el cliente con ID: {}. Detalles: {}", id, e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @PutMapping("/{id}")
     public ResponseEntity<ClientesDTO> atualizar(@PathVariable int id, @Valid @RequestBody ClientesRequest request) {
+        log.info("Solicitud para actualizar cliente ID: {} con los datos: {}", id, request);
         try{
             return new ResponseEntity<>(clientesService.actualizar(id, request), HttpStatus.OK);}
         catch (NullPointerException e) {
+            log.warn("Falló la actualización: No existe el cliente con ID: {}", id);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable int id){
+        log.info("Procesando la eliminación del cliente ID: {}", id);
         clientesService.eliminar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
