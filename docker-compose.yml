@@ -51,7 +51,7 @@ services:
       categoriaspr:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-productos:3307/db_productos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-productos:3306/db_productos
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -65,7 +65,7 @@ services:
       MYSQL_DATABASE: db_clientes
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3308:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -86,7 +86,7 @@ services:
       categoriascl:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-clientes:3307/db_clientes
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-clientes:3306/db_clientes
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -100,7 +100,7 @@ services:
       MYSQL_DATABASE: db_documento
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3309:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -119,7 +119,7 @@ services:
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-documento:3307/db_documento
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-documento:3306/db_documento
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -132,7 +132,7 @@ services:
       MYSQL_DATABASE: db_categoriascl
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3310:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -151,7 +151,7 @@ services:
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-categoriascl:3307/db_categoriascl
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-categoriascl:3306/db_categoriascl
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -164,7 +164,7 @@ services:
       MYSQL_DATABASE: db_categoriaspr
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3311:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -183,7 +183,7 @@ services:
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-categoriaspr:3307/db_categoriaspr
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-categoriaspr:3306/db_categoriaspr
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -196,7 +196,7 @@ services:
       MYSQL_DATABASE: db_pago
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3312:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -215,7 +215,7 @@ services:
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-pago:3307/db_pago
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-pago:3306/db_pago
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -228,7 +228,7 @@ services:
       MYSQL_DATABASE: db_pedidos
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3313:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -251,7 +251,7 @@ services:
       productos:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-pedidos:3307/db_pedidos
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-pedidos:3306/db_pedidos
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -266,7 +266,7 @@ services:
       MYSQL_DATABASE: db_stocks
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3314:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -285,7 +285,7 @@ services:
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-stocks:3307/db_stocks
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-stocks:3306/db_stocks
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -298,7 +298,7 @@ services:
       MYSQL_DATABASE: db_vendedores
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3315:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -317,7 +317,7 @@ services:
       eureka:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-vendedores:3307/db_vendedores
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-vendedores:3306/db_vendedores
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
@@ -330,7 +330,7 @@ services:
       MYSQL_DATABASE: db_venta
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3316:3306"
     networks:
       - microservicios-net
     healthcheck:
@@ -357,7 +357,7 @@ services:
       vendedores:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-venta:3307/db_venta
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-venta:3306/db_venta
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
